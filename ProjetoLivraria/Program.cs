@@ -4,9 +4,13 @@ using ProjetoLivraria.Banco;
 
 try
 {
-    SqlConnection conexao = new Conexao().AbrirConexao();
-    conexao.Open();
-    Console.WriteLine(conexao.State);
+    ListarDAL listar = new ListarDAL();
+    var listaDeLivros = listar.Listar();
+
+    foreach(var livros in listaDeLivros)
+    {
+        Console.WriteLine(livros.Titulo);
+    }
 }
 catch(Exception ex)
 {
