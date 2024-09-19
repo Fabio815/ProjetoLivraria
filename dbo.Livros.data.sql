@@ -1,0 +1,8 @@
+﻿CREATE TABLE Livros
+(
+	IdLivro INT PRIMARY KEY IDENTITY(1, 1) NOT NULL,
+	Titulo NVARCHAR(100) NOT NULL,
+	Genero NVARCHAR(100) NOT NULL,
+	Quantidade INT NOT NULL,
+	AnoLancamento INT NOT NULL
+);
