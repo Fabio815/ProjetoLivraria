@@ -1,4 +1,6 @@
-﻿namespace ProjetoLivraria.Modelos;
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace ProjetoLivraria.Modelos;
 
 internal class Livros
 {
@@ -12,6 +14,7 @@ internal class Livros
         AnoLancamento = anoLancamento;
     }
 
+    [Key]
     public int IdLivro { get; set; }
     public string Titulo { get; set; }
     public string Genero { get; set; }

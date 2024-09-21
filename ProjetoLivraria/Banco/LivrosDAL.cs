@@ -7,12 +7,11 @@ internal class LivrosDAL
 {
     public IEnumerable<Livros> Listar()
     {
-        var listaLivros = new List<Livros>();
-        //Abrindo conexão com o banco de dados.
-        using var abrirConexao = new Conexao().AbrirConexao();
-        abrirConexao.Open();
+        using var context = new LivrariaContext();
+        
+        return context.Livros.ToList();
 
-        string sql = "SELECT * FROM Livros";
+        /*string sql = "SELECT * FROM Livros";
         SqlCommand comando = new SqlCommand(sql, abrirConexao);
         using SqlDataReader leitura = comando.ExecuteReader();
         //Nessa parte estou colocando os dados em variáveis.
@@ -29,12 +28,12 @@ internal class LivrosDAL
             listaLivros.Add(livros);
         }
 
-        return listaLivros;
+        return listaLivros;*/
     }
 
-    public void AdicionarLivro(Livros livro)
+ /*   public void AdicionarLivro(Livros livro)
     {
-        using var abrirConexao = new Conexao().AbrirConexao();
+        using var abrirConexao = new LivrariaContext().AbrirConexao();
         abrirConexao.Open();
 
         string sql = "INSERT INTO Livros(Titulo, Genero, Quantidade, AnoLancamento) VALUES (@titulo, @genero, @quantidade, @lancamento)";
@@ -47,5 +46,5 @@ internal class LivrosDAL
 
         int retorno = comando.ExecuteNonQuery();
         Console.WriteLine(retorno);
-    }
+    }*/
 }

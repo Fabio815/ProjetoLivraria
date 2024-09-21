@@ -6,13 +6,13 @@ using ProjetoLivraria.Modelos;
 //try
 //{
     LivrosDAL listar = new LivrosDAL();
-    listar.AdicionarLivro(new Livros("O Guia do Mochileiro da Galáxia", "Ficção", 200, 2002));
+   // listar.AdicionarLivro(new Livros("O Guia do Mochileiro da Galáxia", "Ficção", 200, 2002));
 
     var listaDeLivros = listar.Listar();
 
     foreach(var livros in listaDeLivros)
     {
-        Console.WriteLine(livros.Titulo);
+       Console.WriteLine(livros.Titulo);
     }
 //}
 //catch(Exception ex)
