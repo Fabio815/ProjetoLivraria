@@ -5,10 +5,15 @@ namespace ProjetoLivraria.Banco;
 
 internal class LivrosDAL
 {
-    public IEnumerable<Livros> Listar()
+    //Estou fazendo com que seja aberto a conexão atráves desse construtor.
+    private readonly LivrariaContext context;
+    public LivrosDAL(LivrariaContext conexao)
     {
-        using var context = new LivrariaContext();
-        
+        this.context = conexao;
+    }
+
+    public IEnumerable<Livros> Listar()
+    {     
         return context.Livros.ToList();
 
         /*string sql = "SELECT * FROM Livros";
@@ -31,12 +36,12 @@ internal class LivrosDAL
         return listaLivros;*/
     }
 
- /*   public void AdicionarLivro(Livros livro)
+    public void AdicionarLivro(Livros livro)
     {
-        using var abrirConexao = new LivrariaContext().AbrirConexao();
-        abrirConexao.Open();
+        context.Livros.Add(livro);
+        context.SaveChanges();
 
-        string sql = "INSERT INTO Livros(Titulo, Genero, Quantidade, AnoLancamento) VALUES (@titulo, @genero, @quantidade, @lancamento)";
+        /*string sql = "INSERT INTO Livros(Titulo, Genero, Quantidade, AnoLancamento) VALUES (@titulo, @genero, @quantidade, @lancamento)";
         SqlCommand comando = new SqlCommand(sql, abrirConexao);
 
         comando.Parameters.AddWithValue("@titulo", livro.Titulo);
@@ -45,6 +50,24 @@ internal class LivrosDAL
         comando.Parameters.AddWithValue("@lancamento", livro.AnoLancamento);
 
         int retorno = comando.ExecuteNonQuery();
-        Console.WriteLine(retorno);
-    }*/
+        Console.WriteLine(retorno);*/
+    }
+
+    public void Atualizar(Livros livros)
+    {
+        context.Update(livros);
+        context.SaveChanges();
+    }
+
+    public void Deletar(Livros livros)
+    {
+        context.Remove(livros);
+        context.SaveChanges();
+    }
+
+    public Livros? EncontrarLivro(string livroProcurado)
+    {
+        var livroEncontrado = context.Livros.FirstOrDefault(livro => livro.Titulo.Equals(livroProcurado));
+        return livroEncontrado;
+    }
 }

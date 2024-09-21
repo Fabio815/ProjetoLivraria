@@ -2,20 +2,17 @@
 using Microsoft.Data.SqlClient;
 using ProjetoLivraria.Banco;
 using ProjetoLivraria.Modelos;
+try
+{
+    LivrariaContext context = new LivrariaContext();
+    LivrosDAL listar = new LivrosDAL(context);
+    // listar.AdicionarLivro(new Livros("O Guia do Mochileiro da Galáxia", "Ficção", 200, 2002));
+    string livroProcurado = "O senhor dos aneis";
+    var  livroAchado = listar.EncontrarLivro(livroProcurado);
 
-//try
-//{
-    LivrosDAL listar = new LivrosDAL();
-   // listar.AdicionarLivro(new Livros("O Guia do Mochileiro da Galáxia", "Ficção", 200, 2002));
-
-    var listaDeLivros = listar.Listar();
-
-    foreach(var livros in listaDeLivros)
-    {
-       Console.WriteLine(livros.Titulo);
-    }
-//}
-//catch(Exception ex)
-//{
- //   Console.WriteLine($"Erro {ex.Message}");
-//}
+    Console.WriteLine(livroAchado.Titulo);
+}
+catch(Exception ex)
+{
+   Console.WriteLine($"Erro {ex.Message}");
+}
