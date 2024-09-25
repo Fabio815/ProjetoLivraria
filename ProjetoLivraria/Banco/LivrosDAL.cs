@@ -1,4 +1,5 @@
 ﻿using Microsoft.Data.SqlClient;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using ProjetoLivraria.Modelos;
 
 namespace ProjetoLivraria.Banco;
@@ -57,12 +58,23 @@ internal class LivrosDAL
     {
         context.Update(livros);
         context.SaveChanges();
+
+
     }
 
-    public void Deletar(Livros livros)
+    public void Deletar(Livros livro)
     {
-        context.Remove(livros);
-        context.SaveChanges();
+        LivrariaContext connection = new LivrariaContext();
+        var abrirConexao = connection.ObterConexao();
+        abrirConexao.Open();
+        //context.Remove(livros);
+        //context.SaveChanges();
+        string sqlQuery = $"DELETE FROM Livros WHERE IdLivro = @idLivro";
+        SqlCommand comando = new SqlCommand(sqlQuery, abrirConexao);
+
+        comando.Parameters.AddWithValue("@idLivro", livro.IdLivro);
+        int retorno = comando.ExecuteNonQuery();
+        Console.WriteLine("Deletado.");
     }
 
     public Livros? EncontrarLivro(string livroProcurado)
