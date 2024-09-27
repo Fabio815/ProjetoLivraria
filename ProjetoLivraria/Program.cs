@@ -2,15 +2,14 @@
 using Microsoft.Data.SqlClient;
 using ProjetoLivraria.Banco;
 using ProjetoLivraria.Modelos;
-//try
 
-    LivrariaContext context = new LivrariaContext();
-    LivrosDAL listar = new LivrosDAL(context);
-    
-    listar.Deletar(novoLivro);
+try
+{
 
+}
 
-//catch(Exception ex)
-
- //  Console.WriteLine($"Erro {ex.Message}");
+catch(Exception ex)
+{
+    Console.WriteLine($"Erro {ex.Message}");
+}
 

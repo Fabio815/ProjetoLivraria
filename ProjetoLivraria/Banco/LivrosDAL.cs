@@ -64,17 +64,8 @@ internal class LivrosDAL
 
     public void Deletar(Livros livro)
     {
-        LivrariaContext connection = new LivrariaContext();
-        var abrirConexao = connection.ObterConexao();
-        abrirConexao.Open();
-        //context.Remove(livros);
-        //context.SaveChanges();
-        string sqlQuery = $"DELETE FROM Livros WHERE IdLivro = @idLivro";
-        SqlCommand comando = new SqlCommand(sqlQuery, abrirConexao);
-
-        comando.Parameters.AddWithValue("@idLivro", livro.IdLivro);
-        int retorno = comando.ExecuteNonQuery();
-        Console.WriteLine("Deletado.");
+        context.Remove(livro);
+        context.SaveChanges();
     }
 
     public Livros? EncontrarLivro(string livroProcurado)
