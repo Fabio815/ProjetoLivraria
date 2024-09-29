@@ -1,4 +1,5 @@
-﻿using ProjetoLivraria.Modelos;
+﻿using Microsoft.EntityFrameworkCore;
+using ProjetoLivraria.Modelos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,12 +9,12 @@ using System.Threading.Tasks;
 namespace ProjetoLivraria.Banco
 {
     //O tipo de referência vai ser uma classe.
-    internal abstract class DAL<T> where T: class
+    internal class DAL<T> where T: class
     {
         //Estou estabelecendo a conexão aqui na classe DAL.
         protected readonly LivrariaContext context;
         
-        protected DAL(LivrariaContext conexao)
+        public DAL(LivrariaContext conexao)
         {
             this.context = conexao;
         }
@@ -38,6 +39,11 @@ namespace ProjetoLivraria.Banco
         {
             context.Remove(objeto);
             context.SaveChanges();
+        }
+        public T? EncontrarAlgo(Func<T, bool> condicao)
+        {
+            var retorno = context.Set<T>().FirstOrDefault(condicao);
+            return retorno;
         }
     }
 }

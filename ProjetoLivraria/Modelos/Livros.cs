@@ -20,4 +20,12 @@ internal class Livros
     public string Genero { get; set; }
     public int Quantidade { get; set; }
     public int AnoLancamento { get; set; }
+
+    public void ExibirLivro()
+    {
+        Console.WriteLine($"Título: {Titulo}");
+        Console.WriteLine($"Gênero: {Genero}");
+        Console.WriteLine($"Ano de lançmento: {anoLancamento}");
+        Console.WriteLine($"Quantidade {Quantidade}");
+    }
 }

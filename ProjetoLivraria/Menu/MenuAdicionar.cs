@@ -10,12 +10,21 @@ namespace ProjetoLivraria.Menu
 {
     internal class MenuAdicionar
     {
-
-        public static Livros AdicionarLivroMenu()
+        public static void AdicionarLivro(DAL<Livros> livroDAL)
         {
-            Livros novoLivro = new ("Pão", "Ação", 2012, 2019);
-            LivrosDAL livrosDAL = new();
-            return AdicionarLivro();
+            Console.Clear();
+            Console.Write("Título do livro: ");
+            string nomeLivro = Console.ReadLine();
+            Console.Write("Gênero: ");
+            string genero = Console.ReadLine();
+            Console.Write("Ano de lançamento: ");
+            int anoLancamento = Convert.ToInt32(Console.ReadLine());
+            Console.Write("Quantidade: ");
+            int qts = Convert.ToInt32(Console.ReadLine());
+            Livros novoLivro = new Livros(nomeLivro, genero, qts, anoLancamento);
+            livroDAL.AdicionarLivro(novoLivro);
+            Console.WriteLine("Livro adicionado com sucesso!");
+            Thread.Sleep(2000);
         }
     }
 }
