@@ -23,7 +23,7 @@ void Menu()
             Menu();
             break;
         case 2:
-            MenuAtualizar.AtualizarLivro();
+            MenuAtualizar.AtualizarLivro(livroDAL);
             break;
         case 3:
             MenuDeletarLivro.DeletarLivro(livroDAL);
@@ -31,6 +31,10 @@ void Menu()
             break;
         case 4:
             MenuListarLivros.ListarLivros(livroDAL);
+            break;
+        case 5:
+            MenuProcurarLivro.ProcurarLivro(livroDAL);
+            Menu();
             break;
     }
 

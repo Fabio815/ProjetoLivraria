@@ -9,7 +9,7 @@ internal class Autor
     public int IdAutor { get; set; }
     public string Nome { get; set; }
     public string Nacionalidade { get; set; }
-
+    public int? AnoNascimento { get; set; }
     public void AdicionarLivrosAoAutor(Livros livros)
     {
         listaLivro.Add(livros);
