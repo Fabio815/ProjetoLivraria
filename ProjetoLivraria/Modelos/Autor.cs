@@ -4,7 +4,7 @@ namespace ProjetoLivraria.Modelos;
 
 internal class Autor
 {
-    List<Livros> listaLivro = new List<Livros>();
+    public ICollection<Livros> listaLivro { get; set; } = new List<Livros>();
     [Key]
     public int IdAutor { get; set; }
     public string Nome { get; set; }

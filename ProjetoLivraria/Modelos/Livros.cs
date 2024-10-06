@@ -20,6 +20,7 @@ internal class Livros
     public string Genero { get; set; }
     public int Quantidade { get; set; }
     public int AnoLancamento { get; set; }
+    public Autor? Autor { get; set; }
 
     public void ExibirLivro()
     {
