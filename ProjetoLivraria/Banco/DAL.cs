@@ -45,5 +45,10 @@ namespace ProjetoLivraria.Banco
             var retorno = context.Set<T>().FirstOrDefault(condicao);
             return retorno;
         }
+
+        public IEnumerable<T>? ListarPorAlgo(Func<T, bool> condicao)
+        {
+            return context.Set<T>().Where(condicao);
+        }
     }
 }

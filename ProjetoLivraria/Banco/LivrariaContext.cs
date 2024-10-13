@@ -10,7 +10,14 @@ internal class LivrariaContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        optionsBuilder.UseSqlServer(conexao);
+        try
+        {
+            optionsBuilder.UseSqlServer(conexao);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Erro: {ex.Message}");
+        }
     }
 
     public SqlConnection ObterConexao()

@@ -1,10 +1,5 @@
 ﻿using ProjetoLivraria.Banco;
 using ProjetoLivraria.Modelos;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ProjetoLivraria.Menu
 {
@@ -19,8 +14,23 @@ namespace ProjetoLivraria.Menu
             if (livroAchado != null)
             {
                 Console.WriteLine("Digite os dados do livro novamente");
-                Console.WriteLine("Título: ");
+                Console.Write("Título do livro: ");
                 string tituloLivro = Console.ReadLine();
+                Console.Write("Gênero: ");
+                string genero = Console.ReadLine();
+                Console.Write("Ano de lançamento: ");
+                int anoLancamento = Convert.ToInt32(Console.ReadLine());
+                Console.Write("Quantidade: ");
+                int qts = Convert.ToInt32(Console.ReadLine());
+                Livros novoLivro = new(tituloLivro, genero, qts, anoLancamento);
+                livrosDAL.Atualizar(novoLivro);
+                Console.WriteLine("Livro alterado com sucesso!");
+                Thread.Sleep(2000);
+            }
+            else
+            {
+                Console.WriteLine("Livro não encontrado!");
+                Thread.Sleep(2000);
             }
         }
     }

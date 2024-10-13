@@ -24,9 +24,10 @@ internal class Livros
 
     public void ExibirLivro()
     {
+        Console.WriteLine($"ID: {IdLivro}");
         Console.WriteLine($"Título: {Titulo}");
         Console.WriteLine($"Gênero: {Genero}");
-        Console.WriteLine($"Ano de lançmento: {anoLancamento}");
+        Console.WriteLine($"Ano de lançamento: {AnoLancamento}");
         Console.WriteLine($"Quantidade {Quantidade}");
     }
 }

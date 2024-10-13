@@ -7,6 +7,7 @@ namespace ProjetoLivraria.Menu
     {
         internal static void DeletarLivro(DAL<Livros> livroDAL)
         {
+            Console.Clear();
             Console.WriteLine("Deletar por (1) Título ou (2) ID");
             int opcao = Convert.ToInt32(Console.ReadLine());
             if(opcao == 1)
@@ -16,8 +17,11 @@ namespace ProjetoLivraria.Menu
                 procurarPorTitulo = Console.ReadLine();
                 var livroApagado = livroDAL.EncontrarAlgo(livro => livro.Titulo.Equals(procurarPorTitulo));
                 Livros mostrarLivro = new(livroApagado.Titulo, livroApagado.Genero, livroApagado.Quantidade, livroApagado.AnoLancamento);
+
                 if (livroApagado != null)
                 {
+                    mostrarLivro.ExibirLivro();
+                    Console.WriteLine("\n");
                     Console.Write("Confirmar operação [1] SIM / [2] NÃO: ");
                     int confirmacao = int.Parse(Console.ReadLine());
                     if (confirmacao == 1)

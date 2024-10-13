@@ -13,7 +13,7 @@ void Menu()
 {
     Console.Clear();
     Console.WriteLine("Escolha uma das opções");
-    Console.WriteLine("(1) Adicionar livro\n(2) Atualizar livro\n(3) Deletar livro\n(4) Listar livros");
+    Console.WriteLine("(1) Adicionar livro\n(2) Atualizar livro\n(3) Deletar livro\n(4) Listar livros \n(5) Procurar Livro\n(6) Listar por ano de lançamento");
     Console.Write("Opção: ");
     int opcao = Convert.ToInt32(Console.ReadLine());
     switch (opcao)
@@ -24,6 +24,7 @@ void Menu()
             break;
         case 2:
             MenuAtualizar.AtualizarLivro(livroDAL);
+            Menu();
             break;
         case 3:
             MenuDeletarLivro.DeletarLivro(livroDAL);
@@ -31,11 +32,15 @@ void Menu()
             break;
         case 4:
             MenuListarLivros.ListarLivros(livroDAL);
+            Menu();
             break;
         case 5:
             MenuProcurarLivro.ProcurarLivro(livroDAL);
             Menu();
             break;
+        case 6:
+            MenuListarPorAno.OrdenarPorAno(livroDAL);
+            Menu();
+            break;
     }
-
 }

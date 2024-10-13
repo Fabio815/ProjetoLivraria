@@ -13,16 +13,20 @@ namespace ProjetoLivraria.Menu
         public static void ListarLivros(DAL<Livros> livrosDAL)
         {
             Console.Clear();
-            Console.WriteLine("Listando os livros");
-            foreach (var item in livrosDAL.Listar())
+            if (livrosDAL != null)
             {
-                Console.WriteLine($"ID: {item.IdLivro}");
-                Console.WriteLine($"Título: {item.Titulo}");
-                Console.WriteLine($"Gênero: {item.Genero}");
-                Console.WriteLine($"Ano de lançamento: {item.AnoLancamento}");
-                Console.WriteLine($"Quantidade: {item.Quantidade}\n");
+                Console.WriteLine("Listando os livros");
+                foreach (var item in livrosDAL.Listar())
+                {
+                    item.ExibirLivro();
+                }
+                Console.ReadKey();
             }
-            Console.ReadKey();
+            else
+            {
+                Console.WriteLine("Nenhum livro cadastrado!");
+                Thread.Sleep(2000);
+            }
         }
     }
 }
